@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define separator '#'
+
 
 typedef long long int LONG;
 
@@ -46,7 +48,7 @@ void write(char c, FILE* p) {
     fprintf(p, "%d", d);
 }
 
-LONG* separate(FILE* cod) {
+/*LONG* separate(FILE* cod) {
     LONG* res = (LONG*) malloc(500*sizeof(int));
     int i = 0, j = 0;
     char c;
@@ -104,8 +106,54 @@ LONG* separate(FILE* cod) {
     return res;
 
 }
+*/
+int countDig(LONG n) {
+  int i = 0;
 
+  while(n!=0) {
+    n = n/10;
+    i++;
+  }
+  return i;
+}
+LONG* separate(char str[], LONG n) {
 
+  int blockSize = countDig(n);
+  int textSize = strlen(str);
+  int blocklen = strlen(textsize)/blockSize;
+  LONG* blocks = (LONG*)malloc(blocklen*sizeof(LONG));
+  int i, j, k;
+
+  char* subBlock = (char*)malloc(blockSize*sizeof(char));
+
+  for(i = 0, j = 0, k = 0; i < textsize; i++, k++){
+      if(k == 0 && str[i] == '0') {
+          blocks[j-1] = blocks[j-1]*10;
+      }
+      else {
+          if(i!=0 && i%blockSize == 0 ) {
+            LONG aux = atoll(subBlock);
+            while(mdc(n, aux) != 1) {
+              aux = aux/10;
+              i--;
+            }
+            blocks[j] = aux;
+            memset(subBlock, '\0', blockSize);
+            j++;
+            
+          }
+          else {
+            subBlock[i%blockSize] = str[i];
+          }
+      }
+  }
+  if(len(subBlock) != 0) {
+    blocks[j] = atoll(subBlock);
+  }
+  free(subBlock);
+
+  return blocks;
+}
 
 int main() {
 
@@ -119,13 +167,16 @@ int main() {
   write('b', p);
   fclose(p);*/
 
-  FILE* p = fopen("cod.txt", "r");
+  /*FILE* p = fopen("cod.txt", "r");
   LONG* array = separate(p);
 
   int i;
     printf("\n");
   for(i = 0; i < 4; i++) {
       printf("%lld ", array[i]);
-  }
+  }*/
+ // printf("%d\n", countDig(1111111));
+
+  LONG* blocks = separate();
   return 0;
 }
