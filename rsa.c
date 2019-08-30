@@ -7,7 +7,7 @@
 #define separator '#'
 
 
-typedef long long int LONG;
+typedef unsigned long long int LONG;
 
 LONG pmodn(LONG z, LONG e,LONG n ) {
   LONG b = z;
@@ -37,7 +37,7 @@ LONG mdc(LONG c,LONG fi) {
 }
 
 //c em caixa baixa
-void write(char c, FILE* p) {
+int write(char c) {
     int d;
     if(c == ' ') {
         d = 26;
@@ -45,72 +45,13 @@ void write(char c, FILE* p) {
     else {
         d = c - 97;
     }
-    fprintf(p, "%d", d);
+    return d;
 }
 
-/*LONG* separate(FILE* cod) {
-    LONG* res = (LONG*) malloc(500*sizeof(int));
-    int i = 0, j = 0;
-    char c;
-
-    fpos_t pos;
-    fgetpos(cod, &pos);
-    fscanf(cod, "%c", &c);
-    if(c == '0') {
-        res[0] = 0;
-        j++;
-    }
-    else {
-        fsetpos(cod, &pos);
-    }
-    char bloco[5] = {'\0', '\0', '\0', '\0', '\0'};
-    while(!feof(cod)) {
-        fscanf(cod, "%c", &c);
-        //printf("%c ", c);
-        bloco[i] = c;
-        i++;
-        if(i%4 == 0) {
-            i = 0;
-            char d;
-            fscanf(cod, "%c", &d);
-            printf("%c %s", d, bloco);
-            if(d == '0') {
-                char bloco2[6] = {'\0', '\0', '\0', '\0', '\0' , '\0'};
-                int k;
-                for(k = 0; k <4; k++) {
-                    bloco2[k] = bloco[k];
-                }
-                bloco2[4] = '0';
-                res[j] = atoll(bloco2);
-                for(k = 0; k < 4; k++) {
-                    bloco[k] = '\0';
-                }
-            }
-            else {
-                res[j] = atoll(bloco);
-                bloco[0] = d;
-                int k;
-                for(k = 1; k < 4; k++) {
-                    bloco[k] = '\0';
-                }
-                i++;
-            }
-            j++;
-
-        }
-    }
-
-    if(strlen(bloco) > 0) {
-        res[j] = atoll(bloco);
-    }
-    return res;
-
-}
-*/
 int countDig(LONG n) {
   int i = 0;
 
-  while(n!=0) {
+  while(n > 0) {
     n = n/10;
     i++;
   }
@@ -118,38 +59,40 @@ int countDig(LONG n) {
 }
 LONG* separate(char str[], LONG n) {
 
-  int blockSize = countDig(n);
+  int blockSize = countDig(n)-1;
   int textSize = strlen(str);
-  int blocklen = strlen(textsize)/blockSize;
+  int blocklen = textSize/blockSize;
   LONG* blocks = (LONG*)malloc(blocklen*sizeof(LONG));
   int i, j, k;
 
   char* subBlock = (char*)malloc(blockSize*sizeof(char));
+  memset(subBlock, 0, blockSize);
+  memset(blocks, 0, blocklen);
 
-  for(i = 0, j = 0, k = 0; i < textsize; i++, k++){
+  if(textSize%blockSize ) {
+    blocklen++;
+  }
+
+  for(i = 0, j = 0, k = 0; i < textSize; i++){
       if(k == 0 && str[i] == '0') {
           blocks[j-1] = blocks[j-1]*10;
       }
       else {
-          if(i!=0 && i%blockSize == 0 ) {
+          subBlock[k] = str[i]; 
+          k++;
+          k = k%blockSize;
+          if(k == 0 ) {
             LONG aux = atoll(subBlock);
-            while(mdc(n, aux) != 1) {
-              aux = aux/10;
-              i--;
-            }
             blocks[j] = aux;
-            memset(subBlock, '\0', blockSize);
+            memset(subBlock, 0, blockSize);
             j++;
-            
-          }
-          else {
-            subBlock[i%blockSize] = str[i];
-          }
+          } 
       }
   }
-  if(len(subBlock) != 0) {
+  if(strlen(subBlock) != 0) {
     blocks[j] = atoll(subBlock);
   }
+  
   free(subBlock);
 
   return blocks;
@@ -157,26 +100,13 @@ LONG* separate(char str[], LONG n) {
 
 int main() {
 
-  /*printf("%d\n", mdc(7, 96*52) == 1);
 
-  LONG msg = codDecod(97*53, 7, 173);
-  LONG msg2 = codDecod(97*53, 4279, msg);
-  printf("cod = %lld, decod = %lld\n", msg, msg2);
-  FILE* p = fopen("cod.txt", "w");
-  write('a', p);
-  write('b', p);
-  fclose(p);*/
+  char a[] = "1230060451235111";
 
-  /*FILE* p = fopen("cod.txt", "r");
-  LONG* array = separate(p);
-
+  LONG* blocks = separate(a, 4824);
   int i;
-    printf("\n");
-  for(i = 0; i < 4; i++) {
-      printf("%lld ", array[i]);
-  }*/
- // printf("%d\n", countDig(1111111));
-
-  LONG* blocks = separate();
+  for(i=0; i < 5; i++){
+    printf("%d, ", blocks[i]);
+  }
   return 0;
 }
