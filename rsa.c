@@ -7,7 +7,7 @@
 #define separator '#'
 
 
-typedef unsigned long long int LONG;
+typedef long long int LONG;
 
 LONG pmodn(LONG z, LONG e,LONG n ) {
   LONG b = z;
