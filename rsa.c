@@ -4,10 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define separator '#'
-
-
-typedef long long int LONG;
+#include "/headers/default.h"
 
 LONG pmodn(LONG z, LONG e,LONG n ) {
   LONG b = z;
