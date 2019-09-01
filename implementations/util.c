@@ -13,9 +13,9 @@ int countDig(LONG n) {
 }
 
 //c em caixa baixa
-int precod(char c) {
+char precod(char c) {
 	c = tolower(c);
-    int d;
+    char d;
     if(c == ' ') {
         d = 26;
     }
