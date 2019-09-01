@@ -5,33 +5,15 @@
 #include <string.h>
 
 #include "/headers/default.h"
+#include "inverse.h"
+#include "util.h"
 
-LONG pmodn(LONG z, LONG e,LONG n ) {
-  LONG b = z;
-  LONG m = e;
-  LONG p = 1;
-
-  while(m!= 0) {
-    if(m%2 != 0) {
-      p = (b*p) % n;
-    }
-    m = m/2;
-    b = (b*b) %n;
-  }
-  return p;
-}
 
 LONG codDecod(LONG n,LONG c, LONG b ) {
   LONG expo = pmodn(b, c, n);
   return expo;
 }
 
-LONG mdc(LONG c,LONG fi) {
-  if (fi == 0) {
-    return c;
-  }
-  return mdc(fi, c % fi);
-}
 
 //c em caixa baixa
 int write(char c) {
@@ -45,15 +27,6 @@ int write(char c) {
     return d;
 }
 
-int countDig(LONG n) {
-  int i = 0;
-
-  while(n > 0) {
-    n = n/10;
-    i++;
-  }
-  return i;
-}
 LONG* separate(char str[], LONG n) {
 
   int blockSize = countDig(n)-1;
