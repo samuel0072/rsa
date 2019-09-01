@@ -1,4 +1,5 @@
 #include "default.h"
+#include <stdlib.h>
 
 typedef struct node node;
 
@@ -16,3 +17,5 @@ int list_size(node* head);
 
 //desaloca a lista da memoria
 void clear_list(node* head);
+
+void print_list(node* head);

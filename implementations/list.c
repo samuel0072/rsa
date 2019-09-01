@@ -1,4 +1,5 @@
-#include "\..\headers\list.h"
+#include "../headers/list.h"
+#include <stdio.h>
 
 
 struct node{
@@ -19,15 +20,20 @@ node* add_to_list(node* head, LONG info)
     head->info = info;
     head->next = NULL;
   }
-  node* aux = head->next;
-  while(aux != NULL)
+  else
   {
-    aux = aux->next;
+    node* aux = head;
+    while(aux->next != NULL)
+    {
+      aux = aux->next;
+    }
+    node* new_node = (node*)malloc(sizeof(node));
+    new_node->info = info;
+    new_node->next = NULL;
+    aux->next = new_node;
+    
   }
-  node* new_node = (node*)malloc(sizeof(node));
-  new_node->info = info;
-  new_node->next = NULL;
-  aux->next = new_node;
+ //print_list(head);
 
   return head;
 }
@@ -66,4 +72,12 @@ void clear_list(node* head) {
     free(aux);
     aux = aux2;
   }
+}
+
+void print_list(node* head) {
+  while(head != NULL) {
+    printf("(%lld) -> ", head->info);
+    head = head->next;
+  }
+  printf("\n");
 }

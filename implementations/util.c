@@ -1,4 +1,4 @@
-#include "/../headers/ulti.h"
+#include "../headers/util.h"
 
 LONG pmodn(LONG z, LONG e,LONG n ) {
   LONG b = z;
@@ -17,7 +17,7 @@ LONG pmodn(LONG z, LONG e,LONG n ) {
 
 LONG mdc(LONG a,LONG b) {
   if (b == 0) {
-    return c;
+    return a;
   }
   return mdc(b, a % b);
 }
