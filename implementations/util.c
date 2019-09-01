@@ -1,6 +1,5 @@
 #include "../headers/util.h"
-
-
+#include <stdio.h>
 
 int countDig(LONG n) {
   int i = 0;
@@ -14,7 +13,6 @@ int countDig(LONG n) {
 
 //c em caixa baixa
 char precod(char c) {
-	c = tolower(c);
     char d;
     if(c == ' ') {
         d = 26;

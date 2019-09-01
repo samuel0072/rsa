@@ -1,4 +1,4 @@
-#include "modulos.h"
+#include "default.h"
 
 //recebe o par (n, d) que é a chave privada
 //recebe message que é a mensagem a ser criptografada

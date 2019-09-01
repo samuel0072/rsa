@@ -1,5 +1,4 @@
 #include "../headers/encrypt.h"
-#include "../headers/inverse.h"
 #include "../headers/util.h"
 #include "../headers/modulus.h"
 #include <string.h>
@@ -10,18 +9,21 @@ void encrypt(LONG n, LONG d, char message[]) {
 
 	FILE* output = fopen("../output/message.txt", "w");
 	int i, size;
+	char e;
 	size = strlen(message);
 
+
 	for(i = 0; i < size; i++) {
-		message[i] = precod(message[i]);
+		e = precod(message[i]);
+		message[i] = e;
 	}
+
 	for(i = 0; i < size; i++) {
 		LONG block = (LONG)message[i];
 		LONG block_cod = codDecod(n, d, block);
-		fprintf(output, "%lld", block_cod);
+		fprintf(output, "%lld ", block_cod);
 	}
 	fclose(output);
-
 }
 
 int is_okay(char message[]) {

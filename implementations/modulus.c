@@ -1,4 +1,4 @@
-#include "../headers/modulos.h"
+#include "../headers/modulus.h"
 
 LONG codDecod(LONG n,LONG e, LONG block ) {
   LONG expo = pmodn(block, e, n);
