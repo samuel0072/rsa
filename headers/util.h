@@ -1,7 +1,6 @@
 #include "default.h"
-
-LONG pmodn(LONG z, LONG e,LONG n );
-
-LONG mdc(LONG a,LONG b);
+#include <ctype.h>
 
 int countDig(LONG n);
+
+int precod(char c);
