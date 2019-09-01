@@ -3,6 +3,6 @@
 #include "../headers/default.h"
 
 int main() {
-	LONG inv = inverse_calc(233, 144);
+	LONG inv = inverse_calc(23936, 23935);
 	printf("%lld", inv);
 }
