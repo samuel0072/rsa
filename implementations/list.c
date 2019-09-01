@@ -1,4 +1,4 @@
-#include "/../headers/list.h"
+#include "\..\headers\list.h"
 
 
 struct node{

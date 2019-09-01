@@ -5,8 +5,8 @@
 #include <string.h>
 
 #include "/headers/default.h"
-#include "inverse.h"
-#include "util.h"
+#include "/headers/inverse.h"
+#include "/headers/util.h"
 
 
 LONG codDecod(LONG n,LONG c, LONG b ) {
