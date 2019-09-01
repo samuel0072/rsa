@@ -1,5 +1,4 @@
 #include "/../headers/list.h"
-#include "/../headers/default.h"
 
 
 struct node{
