@@ -9,12 +9,12 @@ visão da interface do usuario:
     "Digite sua chave privada:"
     "Digite sua mensagem"
     responde ao usuario
-    "Sua mensagem esta em output/encrypted.txt"
+    "Sua mensagem esta em output/encrypted.txt"</br>
 3 opção: Descriptografar
   o sistema pede ao usuario a sua chave privada e uma mensagem:
     "Digite sua chave privada:"
     "Digite sua mensagem criptografada"
     responde ao usuario:
-    "Sua mensagem esta em output/decrypted.txt"
+    "Sua mensagem esta em output/decrypted.txt"</br>
     
 FIM
