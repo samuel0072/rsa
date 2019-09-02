@@ -10,15 +10,14 @@ void decrypt(LONG n, LONG e) {
 	FILE* c = fopen("../output/decrypted.txt", "w");//arquivo de saída
 	LONG d;
 	char f = 'w';
+	fscanf(p, "%lld%c", &d, &sep);
 	do  {
-		fscanf(p, "%lld%c", &d, &sep);
-		//printf("%lld%c", d, sep);
 		d = codDecod(n, e, d);
 		f = decod((char)d);
 		printf("%c", f);
 		fprintf(c, "%c", f);
+		fscanf(p, "%lld%c", &d, &sep);
 
 	}while(!feof(p));
-	//remove("../output/message.txt");
 	fclose(c);
 }
