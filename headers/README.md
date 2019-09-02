@@ -67,8 +67,8 @@ recebe a cabeca da lista
 
 <h2>Função LONG codDecod(LONG n,LONG e, LONG block )</h2>
 
-<p>recebe o trio (n, e, block) e retorna block^e mod n, (n, e)<br/>
- chaves para criptografar/decriptografar</p>
+<p>recebe o trio (n, e, block) e retorna block^e mod n,<br/>
+(n, e) chaves para criptografar/decriptografar</p>
 
 <h2>Função LONG pmodn(LONG z, LONG e,LONG n )</h2>
 
