@@ -3,7 +3,7 @@
 <h2>Função void decrypt(LONG n, LONG e)</h2>
 <p>Recebe (n, e) chave para decriptar e decriptografa a mensagem contida no arquivo output/message.txt. A saída fica em output/decrypted.txt</p>
 
-<h1>Arquivo: decrypt</h1>
+<h1>Arquivo: default</h1>
 
 <p>define o separador que vai nas mensagens criptografadas e o tipo long long int como LONG</p>
 
