@@ -22,3 +22,14 @@ char precod(char c) {
     }
     return d;
 }
+
+char decod(char c) {
+  char d;
+  if(c == 26) {
+    d = ' ';
+  }
+  else {
+    d = c + 97;
+  }
+  return d;
+}

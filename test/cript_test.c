@@ -3,5 +3,5 @@
 
 int main () {
 	char frase[] = "samuel";
-	encrypt(23936,23935, frase );
+	encrypt(24297,23935, frase );
 }

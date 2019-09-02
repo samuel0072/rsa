@@ -5,22 +5,22 @@
 #include <stdio.h>
 
 
-void encrypt(LONG n, LONG d, char message[]) {
+void encrypt(LONG n, LONG e, char message[]) {
 
-	FILE* output = fopen("../output/message.txt", "w");
+	FILE* output = fopen("../output/encrypted.txt", "w");
 	int i, size;
-	char e;
+	char f;
 	size = strlen(message);
 
 
 	for(i = 0; i < size; i++) {
-		e = precod(message[i]);
-		message[i] = e;
+		f = precod(message[i]);
+		message[i] = f;
 	}
 
 	for(i = 0; i < size; i++) {
 		LONG block = (LONG)message[i];
-		LONG block_cod = codDecod(n, d, block);
+		LONG block_cod = codDecod(n, e, block);
 		fprintf(output, "%lld ", block_cod);
 	}
 	fclose(output);
