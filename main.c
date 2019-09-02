@@ -8,25 +8,6 @@
 #include "/headers/inverse.h"
 #include "/headers/util.h"
 
-
-LONG codDecod(LONG n,LONG c, LONG b ) {
-  LONG expo = pmodn(b, c, n);
-  return expo;
-}
-
-
-//c em caixa baixa
-int write(char c) {
-    int d;
-    if(c == ' ') {
-        d = 26;
-    }
-    else {
-        d = c - 97;
-    }
-    return d;
-}
-
 LONG* separate(char str[], LONG n) {
 
   int blockSize = countDig(n)-1;

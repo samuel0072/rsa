@@ -1,7 +1,7 @@
 #include "default.h"
 
-LONG pmodn(LONG z, LONG e,LONG n );
-
-LONG mdc(LONG a,LONG b);
-
 int countDig(LONG n);
+
+char precod(char c);
+
+char decod(char c);
