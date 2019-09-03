@@ -9,7 +9,7 @@ void create_table(LONG a, LONG b, node** n) {
 			*n = add_to_list(*n, a/b);
 			create_table(b, a%b, n);
 		}
-} 
+}
 
 LONG inverse_calc(LONG mod, LONG n) {
 	node* table = create_empty_list();
@@ -17,13 +17,13 @@ LONG inverse_calc(LONG mod, LONG n) {
 	LONG u[] = {1, 0};
 	LONG v[] = {0, 1};
 	LONG a[] = {0, 0};
+
 	int size;
 	int i;
 
 	create_table(mod, n, &table);
 	coef_table =  list_to_array(table);
 	size  = list_size(table);
-
 	for(i = 0; i < size-1; i++) {
 		a[0] = u[0] - (coef_table[i]*v[0]);
 		a[1] = u[1] - (coef_table[i]*v[1]);
@@ -32,9 +32,10 @@ LONG inverse_calc(LONG mod, LONG n) {
 		v[0] = a[0];
 		v[1] = a[1];
 	}
+
 	while(v[1] < 0) {
           v[1] = v[1] + mod;
-        } 
-
+        }
+        
 	return v[1];
 }
