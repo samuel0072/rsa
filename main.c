@@ -12,23 +12,23 @@
 
 void menu1() {
   system("cls");
-  printf("\t1-\tGERAR CHAVES\n");
-  printf("\t2-\tCRIPTOGRAFAR\n");
-  printf("\t3-\tDESCRIPTOGRAFAR\n");
+  printf("1-\tGERAR CHAVES\n");
+  printf("2-\tCRIPTOGRAFAR\n");
+  printf("3-\tDESCRIPTOGRAFAR\n");
 }
 void menu_gerar_chaves() {
   system("cls");
-  printf("\tDIGITE P, Q, e E\n");
+  printf("DIGITE P, Q, e E\n");
 }
 void menu_criptografar() {
   system("cls");
-  printf("\tDIGITE SUA CHAVE PARA CRIPTOGRAFAR NA FORMA:\n");
-  printf("\tn e\n");
+  printf("DIGITE SUA CHAVE PARA CRIPTOGRAFAR NA FORMA:\n");
+  printf("n e\n");
 }
 void menu_descriptografar() {
   system("cls");
-  printf("\tDIGITE SUA CHAVE PARA DESCRIPTOGRAFAR NA FORMA:\n");
-  printf("\tn e\n");
+  printf("DIGITE SUA CHAVE PARA DESCRIPTOGRAFAR NA FORMA:\n");
+  printf("n e\n");
 }
 void limpar_entrada() {
   fflush(stdin);
@@ -88,8 +88,31 @@ int main() {
         printf("Digite qualquer coisa ara sair\n");
 
         scanf(" %c", &choice);
-      default:
+        break;
+      case 3:
+        k = fopen("output/message.txt", "w");
+        limpar_entrada();
+        menu_descriptografar();
 
+        scanf("%lld %lld", &n, &e);
+        limpar_entrada();
+
+        printf("Digite sua mensagem criptografada:\n");
+        scanf("%[^\n]", message);
+        limpar_entrada();
+        fprintf(k, "%s", message);
+        limpar_entrada();
+        fclose(k);
+        decrypt(n, e);
+
+        printf("Sua mensagem esta no arquivo output/decrypted.txt\n");
+        printf("Digite qualquer coisa ara sair\n");
+
+        scanf(" %c", &choice);
+        break;
+      default:
+        printf("Opçao nao valida\nDigite qualquer coisa para sair");
+        scanf(" %c", &choice);
         break;
     }
     

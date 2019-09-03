@@ -14,6 +14,7 @@ void decrypt(LONG n, LONG e) {
 	do  {
 		d = codDecod(n, e, d);
 		f = decod((char)d);
+		printf("%lld ", d);
 		fprintf(c, "%c", f);
 		fscanf(p, "%lld%c", &d, &sep);
 
