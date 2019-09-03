@@ -3,17 +3,19 @@
 #include "../headers/modulus.h"
 #include <string.h>
 #include <stdio.h>
-
+#include <ctype.h>
 
 void encrypt(LONG n, LONG e, char message[]) {
 
-	FILE* output = fopen("../output/encrypted.txt", "w");
+	FILE* output = fopen("output/encrypted.txt", "w");
 	int i, size;
 	char f;
 	size = strlen(message);
 
 
+
 	for(i = 0; i < size; i++) {
+		message[i] = tolower(message[i]);
 		f = precod(message[i]);
 		message[i] = f;
 	}
@@ -21,7 +23,7 @@ void encrypt(LONG n, LONG e, char message[]) {
 	for(i = 0; i < size; i++) {
 		LONG block = (LONG)message[i];
 		LONG block_cod = codDecod(n, e, block);
-		fprintf(output, "%lld ", block_cod);
+		fprintf(output, "%lld%c", block_cod, SEPARATOR);
 	}
 	fclose(output);
 }
