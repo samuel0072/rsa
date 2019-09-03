@@ -58,7 +58,7 @@ int main() {
           exit(0);
         }
         n = p*q;
-        d = inverse_calc(n, e);
+        d = inverse_calc((p-1)*(q-1), e);
 
         printf("Sua chave publica: (%lld, %lld)\n", n, e);
         printf("Sua chave privada: (%lld, %lld)\n", n, d);
