@@ -31,7 +31,10 @@ LONG inverse_calc(LONG mod, LONG n) {
 		u[1] = v[1];
 		v[0] = a[0];
 		v[1] = a[1];
-	} 
+	}
+	while(v[1] < 0) {
+          v[1] = v[1] + mod;
+        } 
 
-	return v[1]%mod;
+	return v[1];
 }
